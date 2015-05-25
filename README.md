@@ -22,8 +22,10 @@ Stay tuned on our [blog](http://blog.sematext.com).
 # Installation 
 
 ```
-npm i spm-agent-docker -g 
+npm i sematext/spm-agent-docker -g 
 ```
+
+Please note this module is not yet published on npm 
 
 # Usage
 
