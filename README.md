@@ -16,8 +16,8 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 
 # Status
 
-Currently only for internal use by Sematext - testrelease for the integration with the SPM user interface 
-Stay tuned on our [blog](http://blog.sematext.com) for future announcements.
+Currently only for internal use by Sematext - test release for the integration with SPM. 
+Stay tuned on our [blog](http://blog.sematext.com).
 
 # Installation 
 
