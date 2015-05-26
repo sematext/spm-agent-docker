@@ -46,9 +46,9 @@ spm-docker needs access to the docker unix socket (default: /var/run.docker.sock
 sudo spm-docker YOUR-SPM-APP-TOKEN-HERE
 ```
 
-We recommend to add the user, which is running spm-docker to the docker group. 
+We recommend to run spm-docker on a user account, belonging to the 'docker' group. 
 Please refer to the instructions for your operating system, e.g.:
-The docker install instructions for debian: https://docs.docker.com/installation/debian/
+The docker install instructions for Debian: https://docs.docker.com/installation/debian/
 
 ```
 # Add the docker group if it doesn't already exist.
