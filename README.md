@@ -40,7 +40,7 @@ spm-docker YOUR-SPM-APP-TOKEN-HERE
 
 # Permissions and security
 
-spm-docker needs access to the docker unix socket (default: /var/run.docker.sock).
+spm-docker needs access to the docker unix socket (default: /var/run/docker.sock).
 
 ```
 sudo spm-docker YOUR-SPM-APP-TOKEN-HERE
