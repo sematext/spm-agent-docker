@@ -65,6 +65,7 @@ $ sudo service docker restart
 ```
 
 # Building the docker image from sources
+The source directory contains the "Dockerfile" and the runner script "run.sh"
 
 ```
 sudo docker build -t sematext/spm-agent-docker .
