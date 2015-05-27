@@ -73,7 +73,7 @@ sudo docker build -t sematext/spm-agent-docker .
 # Running SPM Agent for Docker as docker container
 
 ```
-docker run  -d -e SPM_TOKEN=76349b1d-92fc-4e25-9d57-812f0fe85699 -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
+docker run  -d -e SPM_TOKEN=76349b1d-XXXX-XXXX-XXXX-812f0fe85699 -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
 ```
 
 
