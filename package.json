@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sematext/docker.git"
+    "url": "https://github.com/sematext/spm-agent-docker.git"
   },
   "keywords": [
     "SPM",
@@ -41,20 +41,21 @@
   "author": "Sematext Group, Inc.",
   "license": "Copyright (c) Sematext Group, Inc.",
   "bugs": {
-    "url": "https://github.com/sematext/docker/issues"
+    "url": "https://github.com/sematext/spm-agent-docker/issues"
   },
   "homepage": "http://www.sematext.com",
   "dependencies": {
     "adm-zip": "^0.4.7",
     "docker-loghose": "^0.5.0",
     "docker-stats": "^0.2.1",
+    "dockerode": "^2.1.4",
     "flat": "^1.5.1",
     "ls": "^0.1.0",
     "measured": "^1.0.0",
+    "minimist": "^1.1.1",
     "moment": "^2.9.0",
     "request": "^2.54.0",
     "spm-agent": "^1.24.5",
-    "spm-agent-nodejs": "^1.24.12",
     "through2": "^0.6.5",
     "which": "^1.0.9",
     "winston": "^1.0.0"
