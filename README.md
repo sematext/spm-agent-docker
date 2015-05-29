@@ -5,7 +5,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 
 - OS Metrics of the Host machine (CPU / Mem / Swap) 
 - Stats from containers
-	- CPU Usaage
+	- CPU Usage
 	- Memory Usage
 	- Network Stats
 	- Disk I/O Stats
