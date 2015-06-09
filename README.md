@@ -28,7 +28,10 @@ Relased for public beta. Stay tuned on our [blog](http://blog.sematext.com).
 	docker pull sematext/spm-agent-docker
 	```
 
-4. Run it on your docker host and pass the SPM Application Token, the docker socket and the hostname as parameters
+4. Run it on your docker host and pass following parameters: 
+	- SPM_TOKEN - SPM Application Token
+	- HOSTNAME - name of the docker host
+	- Path to the docker socket using "-v"
 
 	```
 	docker run -d -e SPM_TOKEN=YOUR_APP_TOKEN -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
