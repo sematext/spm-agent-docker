@@ -17,11 +17,11 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 
 ## Status
 
-Relased for public beta. Stay tuned on our [blog](http://blog.sematext.com).
+Public Beta. Stay tuned on our [blog](http://blog.sematext.com).
 
 ## Installation 
 
-1. Get a free account [www.sematext.com](https://apps.sematext.com/users-web/register.do)  
+1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
 2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) and copy the SPM Application Token  
 3. Pull the docker image
 	```
