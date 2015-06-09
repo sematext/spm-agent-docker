@@ -83,7 +83,7 @@ $ sudo gpasswd -a ${USER} docker
 $ sudo service docker restart
 ```
 
-## Building the docker image from sources
+## Build the docker image from sources
 The source directory contains the [Dockerfile](https://github.com/sematext/spm-agent-docker/blob/master/Dockerfile) and the runner script [run.sh](https://github.com/sematext/spm-agent-docker/blob/master/run.sh)
 
 ```
