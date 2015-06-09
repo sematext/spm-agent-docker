@@ -59,7 +59,7 @@ First off, thanks for taking the time to contribute!
 
 We encourage users to open issues, because it's impossible to test everything on all platforms - so please let us know if something goes wrong or if you need enhancements. 
 
-If you are developer and like to contribute to this repository, please fork it and send us a pull request. 
+If you are developer and like to contribute to this repository, please fork it and create a pull request. 
 
 The following section provides information to setup the test environment (assuming you know already git, node.js and Docker).
 
