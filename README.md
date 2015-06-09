@@ -17,7 +17,9 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 
 ## Status
 
-Public Beta. Stay tuned on our [blog](http://blog.sematext.com).
+Public Beta. Stay tuned on [blog.sematext.com](http://blog.sematext.com).
+Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ](https://twitter.com/sematext/) 
+
 
 ## Installation 
 
@@ -39,12 +41,14 @@ Public Beta. Stay tuned on our [blog](http://blog.sematext.com).
 
 # Building your own spm-agent-docker image 
 
-If you want to run the node.js implementation e.g. to buid an updated docker image, you need to install it from this sources. 
+SPM for Docker is implemented in node.js and this package provides an executable "spm-docker".
+It could run directly on the Docker host, for example to test a new version during development. 
+We like to make deployment easy and wrap node.js (actually io.js) and the scripts from this repository into a docker image (see Dockerfile and run.sh in this repository) - published on docker hub labeled as [sematext/spm-agent-docker](https://registry.hub.docker.com/u/sematext/spm-agent-docker/).
 
+To install spm-docker use
 ```
 npm i sematext/spm-agent-docker -g 
 ```
-
 Please note this module is not published on npm, because it should be used with the docker image. 
 
 ## Running the node.js agent 
@@ -80,7 +84,7 @@ $ sudo service docker restart
 ```
 
 ## Building the docker image from sources
-The source directory contains the "Dockerfile" and the runner script "run.sh"
+The source directory contains the [Dockerfile](https://github.com/sematext/spm-agent-docker/blob/master/Dockerfile) and the runner script [run.sh](https://github.com/sematext/spm-agent-docker/blob/master/run.sh)
 
 ```
 sudo docker build -t sematext/spm-agent-docker-local .
