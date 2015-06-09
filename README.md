@@ -1,5 +1,5 @@
 
-[SPM performance monitoring by Sematext](http://sematext.com/spm/) - this is the Docker monitoring agent for SPM.
+[SPM performance monitoring by Sematext](http://sematext.com/spm/integrations/docker-monitoring.html) - this is the  monitoring agent for Docker.
 
 Following information is collected and transmitted to SPM (Cloud or On-Premises version):
 
@@ -41,8 +41,8 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 
 # Support
 
-1. Please check the [SPM for Docker Wiki](](https://sematext.atlassian.net/wiki/display/PUBSPM/SPM+for+Docker)) 
-2. If you have questions about SPM for Docker, feel free to use the web chat in the [SPM user interface](https://apps.sematext.com/users-web/login.do) or drop us a line to support@sematext.com
+1. Please check the [SPM for Docker Wiki](https://sematext.atlassian.net/wiki/display/PUBSPM/SPM+for+Docker)
+2. If you have questions about SPM for Docker, feel free to chat in the [SPM user interface](https://apps.sematext.com/users-web/login.do) with us or write an e-mail to support@sematext.com
 3. Open an issue [here](https://github.com/sematext/spm-agent-docker/issues) 
 
 
