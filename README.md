@@ -15,6 +15,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
   - container id
   - name tag 
 
+
 ## Status
 
 Public Beta. Stay tuned on [blog.sematext.com](http://blog.sematext.com).
@@ -37,12 +38,18 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 
 	```
 	docker run -d -e SPM_TOKEN=YOUR_APP_TOKEN -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
+
 	```
+	You’ll see your Docker metrics in SPM after about a minute.
+	
+5. Watch metrics, use anomaly detection for alerts, create e-mail reports and much more ...
+
+![](https://sematext.files.wordpress.com/2015/06/docker-overview-2.png)
 
 # Support
 
 1. Please check the [SPM for Docker Wiki](https://sematext.atlassian.net/wiki/display/PUBSPM/SPM+for+Docker)
-2. If you have questions about SPM for Docker, feel free to chat in the [SPM user interface](https://apps.sematext.com/users-web/login.do) with us or write an e-mail to support@sematext.com
+2. If you have questions about SPM for Docker, chat with us in the [SPM user interface](https://apps.sematext.com/users-web/login.do) or drop an e-mail to support@sematext.com
 3. Open an issue [here](https://github.com/sematext/spm-agent-docker/issues) 
 
 
@@ -50,10 +57,11 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 
 First off, thanks for taking the time to contribute! 
 
-We encourage users to open issues, because we can't test everything on all possible platforms - so please let us know if something goes wrong or if the documentation could be improved for a specific platform. 
+We encourage users to open issues, because it's impossible to test everything on all platforms - so please let us know if something goes wrong or if you need enhancements. 
 
-If you like to contribute to this repository please fork it and send us a pull request. 
-The following section provides some background information to setup the development environment (asuuming you know already git, node.js and Docker).
+If you are developer and like to contribute to this repository, please fork it and send us a pull request. 
+
+The following section provides information to setup the test environment (assuming you know already git, node.js and Docker).
 
 ## Building your own spm-agent-docker image 
 
