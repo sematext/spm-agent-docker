@@ -9,7 +9,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	- Memory Usage
 	- Network Stats
 	- Disk I/O Stats
-- Aggregations/ Filters by 
+- Aggregations / Filters by 
   - host name
   - image name
   - container id
