@@ -10,7 +10,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	- Network Stats
 	- Disk I/O Stats
 - Aggregations/ Filters by 
-  - hostname
+  - host name
   - image name
   - container id
   - name tag 
@@ -39,7 +39,23 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 	docker run -d -e SPM_TOKEN=YOUR_APP_TOKEN -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
 	```
 
-# Building your own spm-agent-docker image 
+# Support
+
+1. Please check the [SPM for Docker Wiki](](https://sematext.atlassian.net/wiki/display/PUBSPM/SPM+for+Docker)) 
+2. If you have questions about SPM for Docker, feel free to use the web chat in the [SPM user interface](https://apps.sematext.com/users-web/login.do) or drop us a line to support@sematext.com
+3. Open an issue [here](https://github.com/sematext/spm-agent-docker/issues) 
+
+
+# Contributing
+
+First off, thanks for taking the time to contribute! 
+
+We encourage users to open issues, because we can't test everything on all possible platforms - so please let us know if something goes wrong or if the documentation could be improved for a specific platform. 
+
+If you like to contribute to this repository please fork it and send us a pull request. 
+The following section provides some background information to setup the development environment (asuuming you know already git, node.js and Docker).
+
+## Building your own spm-agent-docker image 
 
 SPM for Docker is implemented in node.js and this package provides an executable "spm-docker".
 It could run directly on the Docker host, for example to test a new version during development. 
@@ -84,6 +100,7 @@ $ sudo service docker restart
 ```
 
 ## Build the docker image from sources
+
 The source directory contains the [Dockerfile](https://github.com/sematext/spm-agent-docker/blob/master/Dockerfile) and the runner script [run.sh](https://github.com/sematext/spm-agent-docker/blob/master/run.sh)
 
 ```
