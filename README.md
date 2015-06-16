@@ -95,8 +95,15 @@ If you like to run the agent using systemd / fleet unit file please change this 
 
 For systemd copy the file to /etc/systemd/system/spm-agent.service then run 
 ```
-systemctl enable /etc/systemd/spm-agent.service
-systemctl start spm-agent
+sudo systemctl enable /etc/systemd/spm-agent.service
+sudo systemctl start spm-agent
+```
+
+Check if everything is running, a few helpful commands
+```
+sudo systemctl status -l spm-agent
+journalctl | tail -30
+docker ps | grep spm-agent
 ```
 
 
