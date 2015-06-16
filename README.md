@@ -55,6 +55,41 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 3. Open an issue [here](https://github.com/sematext/spm-agent-docker/issues) 
 
 
+# Installation on CoreOS Linux
+
+Set the value of the SPM access token in etcd
+
+```
+etcdctl set /SPM_TOKEN fe31fc3a-xxxx-xxxx-xxxx-be376bf58554
+```
+Then start SPM Agent 
+```
+docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
+```
+
+If you like to run the agent using systemd / fleet unit file please change this template to your needs
+
+```
+[Unit]
+Description=SPM Docker Agent
+After=docker.service
+Requires=docker.service
+
+[Service]
+Environment="SPM_TOKEN=fe31fc3a-4660-47c6-b83c-be376bf58554"
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill spm-agent
+ExecStartPre=-/usr/bin/docker rm spm-agent
+ExecStartPre=/usr/bin/docker pull sematext/spm-agent-docker
+ExecStart=/usr/bin/docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock semate
+xt/spm-agent-docker
+ExecStop=/usr/bin/docker stop spm-agent
+
+[X-Fleet]
+Global=true
+```
+
+
 # Contributing
 
 First off, thanks for taking the time to contribute! 
