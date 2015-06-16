@@ -57,36 +57,46 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 
 # Installation on CoreOS Linux
 
-Set the value of the SPM access token in etcd
+1. Get a free account apps.sematext.com
+2. Create an SPM App of type “Docker” and copy the SPM Application Token
+3. Set the value of the SPM access token in etcd
 
-```
-etcdctl set /SPM_TOKEN fe31fc3a-xxxx-xxxx-xxxx-be376bf58554
-```
-Then start SPM Agent 
-```
-docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
-```
+	```
+	etcdctl set /SPM_TOKEN fe31fc3a-xxxx-xxxx-xxxx-be376bf58554
+	```
+
+4. Start SPM Agent 
+
+	```
+	docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
+	```
 
 If you like to run the agent using systemd / fleet unit file please change this template to your needs
-
+	
 ```
-[Unit]
-Description=SPM Docker Agent
-After=docker.service
-Requires=docker.service
+	[Unit]
+	Description=SPM Docker Agent
+	After=docker.service
+	Requires=docker.service
+	
+	[Service]
+	Environment="SPM_TOKEN=fe31fc3a-4660-47c6-b83c-be376bf58554"
+	TimeoutStartSec=0
+	ExecStartPre=-/usr/bin/docker kill spm-agent
+	ExecStartPre=-/usr/bin/docker rm spm-agent
+	ExecStartPre=/usr/bin/docker pull sematext/spm-agent-docker
+	ExecStart=/usr/bin/docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock semate
+	xt/spm-agent-docker
+	ExecStop=/usr/bin/docker stop spm-agent
+	
+	[X-Fleet]
+	Global=true
+```
 
-[Service]
-Environment="SPM_TOKEN=fe31fc3a-4660-47c6-b83c-be376bf58554"
-TimeoutStartSec=0
-ExecStartPre=-/usr/bin/docker kill spm-agent
-ExecStartPre=-/usr/bin/docker rm spm-agent
-ExecStartPre=/usr/bin/docker pull sematext/spm-agent-docker
-ExecStart=/usr/bin/docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock semate
-xt/spm-agent-docker
-ExecStop=/usr/bin/docker stop spm-agent
-
-[X-Fleet]
-Global=true
+For systemd copy the file to, to /etc/systemd/spm-agent.service the run 
+```
+systemctl enable /etc/systemd/spm-agent.service
+systemctl start spm-agent
 ```
 
 
