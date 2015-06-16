@@ -57,8 +57,8 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 
 # Installation on CoreOS Linux
 
-1. Get a free account apps.sematext.com
-2. Create an SPM App of type “Docker” and copy the SPM Application Token
+1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
+2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) and copy the SPM Application Token
 3. Set the value of the SPM access token in etcd
 
 	```
