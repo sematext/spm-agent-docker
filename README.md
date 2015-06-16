@@ -93,7 +93,7 @@ If you like to run the agent using systemd / fleet unit file please change this 
 	Global=true
 ```
 
-For systemd copy the file to, to /etc/systemd/spm-agent.service the run 
+For systemd copy the file to /etc/systemd/system/spm-agent.service the run 
 ```
 systemctl enable /etc/systemd/spm-agent.service
 systemctl start spm-agent
