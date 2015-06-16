@@ -64,7 +64,7 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 	```
 	etcdctl set /SPM_TOKEN fe31fc3a-xxxx-xxxx-xxxx-be376bf58554
 	```
-
+	
 4. Start SPM Agent 
 
 	```
@@ -93,7 +93,7 @@ If you like to run the agent using systemd / fleet unit file please change this 
 	Global=true
 ```
 
-For systemd copy the file to /etc/systemd/system/spm-agent.service the run 
+For systemd copy the file to /etc/systemd/system/spm-agent.service then run 
 ```
 systemctl enable /etc/systemd/spm-agent.service
 systemctl start spm-agent
