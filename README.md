@@ -71,7 +71,7 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 	docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
 	```
 
-If you like to run the agent using systemd / fleet [unit file](https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service) please change this template to your needs.
+If you like to run the agent using systemd / fleet unit file please change [this template]((https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)) to your needs.
 	
 ```
 	[Unit]
