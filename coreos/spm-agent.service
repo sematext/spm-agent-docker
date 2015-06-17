@@ -1,0 +1,15 @@
+[Unit]
+Description=SPM Docker Agent
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill spm-agent
+ExecStartPre=-/usr/bin/docker rm spm-agent
+ExecStartPre=/usr/bin/docker pull sematext/spm-agent-docker:latest
+ExecStart=/bin/sh -c '/usr/bin/docker run -d --name spm-agent -e SPM_TOKEN=$(etcdctl get SPM_TOKEN) -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker'
+ExecStop=/usr/bin/docker stop spm-agent
+
+[X-Fleet]
+Global=true
