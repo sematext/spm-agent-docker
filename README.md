@@ -80,7 +80,6 @@ If you like to run the agent using systemd / fleet unit file please change this 
 	Requires=docker.service
 	
 	[Service]
-	Environment="SPM_TOKEN=fe31fc3a-4660-47c6-b83c-be376bf58554"
 	TimeoutStartSec=0
 	ExecStartPre=-/usr/bin/docker kill spm-agent
 	ExecStartPre=-/usr/bin/docker rm spm-agent
