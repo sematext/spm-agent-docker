@@ -71,7 +71,9 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 	docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
 	```
 
-If you like to run the agent using systemd / fleet unit file please change [this template]((https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)) to your needs.
+## Unit File for systemd / fleet
+
+To initialize SPM for Docker as systemd service please change [this template]((https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)) to your needs.
 	
 ```
 	[Unit]
@@ -81,17 +83,22 @@ If you like to run the agent using systemd / fleet unit file please change [this
 
 	[Service]
 	TimeoutStartSec=0
+	EnvironmentFile=/etc/environment
+	Restart=always
+	RestartSec=30s
 	ExecStartPre=-/usr/bin/docker kill spm-agent
 	ExecStartPre=-/usr/bin/docker rm spm-agent
 	ExecStartPre=/usr/bin/docker pull sematext/spm-agent-docker:latest
-	ExecStart=/bin/sh -c '/usr/bin/docker run -d --name spm-agent -e SPM_TOKEN=$(etcdctl get SPM_TOKEN) -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker'
+	ExecStart=/bin/sh -c 'set -ex; /usr/bin/docker run -d --name spm-agent -e SPM_TOKEN=$(etcdctl get SPM_TOKEN) -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker'
 	ExecStop=/usr/bin/docker stop spm-agent
 
 	[X-Fleet]
 	Global=true
+
 ```
 
-For systemd copy the file to /etc/systemd/system/spm-agent.service then run 
+Copy the file 'spm-agent.service' to /etc/systemd/system/spm-agent.service then run 
+
 ```
 sudo systemctl enable /etc/systemd/spm-agent.service
 sudo systemctl start spm-agent
