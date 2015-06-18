@@ -49,14 +49,16 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 	docker pull sematext/spm-agent-docker
 	```
 
-4. Run it on your docker host and pass following parameters: 
-	- SPM_TOKEN - SPM Application Token
-	- HOSTNAME - name of the docker host
-	- Path to the docker socket using "-v"
+4. Run it on your docker host: 
 
 	```
 	docker run -d -e SPM_TOKEN=YOUR_APP_TOKEN -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
 	```
+	Parameters:
+	- -e SPM_TOKEN - SPM Application Token
+	- -e HOSTNAME - Name of the docker host
+	- -v /var/run/docker.sock - Path to the docker socket
+	
 	You’ll see your Docker metrics in SPM after about a minute.
 	
 5. Watch metrics, use anomaly detection for alerts, create e-mail reports and much more ...
