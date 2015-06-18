@@ -48,12 +48,6 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 
 ![](https://sematext.files.wordpress.com/2015/06/docker-network-metrics.png)
 
-# Support
-
-1. Please check the [SPM for Docker Wiki](https://sematext.atlassian.net/wiki/display/PUBSPM/SPM+for+Docker)
-2. If you have questions about SPM for Docker, chat with us in the [SPM user interface](https://apps.sematext.com/users-web/login.do) or drop an e-mail to support@sematext.com
-3. Open an issue [here](https://github.com/sematext/spm-agent-docker/issues) 
-
 
 # Installation on CoreOS Linux
 
@@ -71,16 +65,16 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 	docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
 	```
 
-## Unit File for systemd / fleet
+## Unit File for fleet
 
-To initialize SPM for Docker as systemd service please change [this template]((https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)) to your needs.
+To initialize SPM for Docker with fleet please change [this template]((https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)) to your needs.
 	
 ```
 	[Unit]
 	Description=SPM Docker Agent
 	After=docker.service
 	Requires=docker.service
-
+	
 	[Service]
 	TimeoutStartSec=0
 	EnvironmentFile=/etc/environment
@@ -91,25 +85,29 @@ To initialize SPM for Docker as systemd service please change [this template]((h
 	ExecStartPre=/usr/bin/docker pull sematext/spm-agent-docker:latest
 	ExecStart=/bin/sh -c 'set -ex; /usr/bin/docker run -d --name spm-agent -e SPM_TOKEN=$(etcdctl get SPM_TOKEN) -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker'
 	ExecStop=/usr/bin/docker stop spm-agent
-
+	
+	[Install]
+	WantedBy=multi-user.target
+	
 	[X-Fleet]
 	Global=true
 
 ```
 
-Copy the file 'spm-agent.service' to /etc/systemd/system/spm-agent.service then run 
-
+To activate SPM Docker Agent for th entire cluster save the file as spm-agent.service. Load and start the service with
 ```
-sudo systemctl enable /etc/systemd/spm-agent.service
-sudo systemctl start spm-agent
+	fleetctl load spm-agent.service && fleetctl start spm-agent.service
 ```
 
-Check if everything is running, a few helpful commands
-```
-sudo systemctl status -l spm-agent
-journalctl | tail -30
-docker ps | grep spm-agent
-```
+After one minute you should see the metrics in SPM.
+
+
+# Support
+
+1. Please check the [SPM for Docker Wiki](https://sematext.atlassian.net/wiki/display/PUBSPM/SPM+for+Docker)
+2. If you have questions about SPM for Docker, chat with us in the [SPM user interface](https://apps.sematext.com/users-web/login.do) or drop an e-mail to support@sematext.com
+3. Open an issue [here](https://github.com/sematext/spm-agent-docker/issues) 
+
 
 
 # Contributing
