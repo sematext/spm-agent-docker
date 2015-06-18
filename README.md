@@ -1,3 +1,20 @@
+
+Table of Contents
+=================
+
+  * [SPM for Docker](#spm-for-docker)
+    * [Status](#status)
+    * [Installation](#installation)
+    * [Installation on CoreOS Linux](#installation-on-coreos-linux)
+    	* [Unit File for fleet](#unit-file-for-fleet)
+  * [Support](#support)
+  * [Contributing](#contributing)
+    * [Building your own spm-agent-docker image](#building-your-own-spm-agent-docker-image)
+    * [Running the node.js agent](#running-the-nodejs-agent)
+    * [Permissions and security](#permissions-and-security)
+    * [Build the docker image from sources](#build-the-docker-image-from-sources)
+    * [Running SPM Agent for Docker as docker container](#running-spm-agent-for-docker-as-docker-container)
+
 # SPM for Docker
 
 [SPM performance monitoring by Sematext](http://sematext.com/spm/integrations/docker-monitoring.html) - this is the  monitoring agent for Docker.
@@ -49,7 +66,7 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 ![](https://sematext.files.wordpress.com/2015/06/docker-network-metrics.png)
 
 
-# Installation on CoreOS Linux
+## Installation on CoreOS Linux
 
 1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
 2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) and copy the SPM Application Token
@@ -65,7 +82,7 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 	docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
 	```
 
-## Unit File for fleet
+### Unit File for fleet
 
 To initialize SPM for Docker with fleet please change [this template]((https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)) to your needs.
 	
