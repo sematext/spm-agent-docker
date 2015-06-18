@@ -1,5 +1,5 @@
 [Unit]
-Description=Logsene log forwarder
+Description=Logsene Log Forwarder
 
 [Service]
 Restart=always
