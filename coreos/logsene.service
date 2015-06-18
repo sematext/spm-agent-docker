@@ -1,0 +1,13 @@
+[Unit]
+Description=Logsene log forwarder
+
+[Service]
+Restart=always
+RestartSec=10s
+ExecStart=/bin/sh -c "journalctl -o short -f | ncat --ssl logsene-receiver-syslog.sematext.com  10514"
+
+[Install]
+WantedBy=multi-user.target
+
+[X-Fleet]
+Global=true
