@@ -7,6 +7,7 @@ Table of Contents
     * [Installation](#installation)
     * [Installation on CoreOS Linux](#installation-on-coreos-linux)
     	* [Unit File for fleet](#unit-file-for-fleet)
+    	* [Centralize all journal logs](#centralize-all-journal-logs)
   * [Support](#support)
   * [Contributing](#contributing)
     * [Building your own spm-agent-docker image](#building-your-own-spm-agent-docker-image)
@@ -86,39 +87,32 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 
 ### Unit File for fleet
 
-To initialize SPM for Docker with fleet please change [this template]((https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)) to your needs.
-	
-```
-	[Unit]
-	Description=SPM Docker Agent
-	After=docker.service
-	Requires=docker.service
-	
-	[Service]
-	TimeoutStartSec=0
-	EnvironmentFile=/etc/environment
-	Restart=always
-	RestartSec=30s
-	ExecStartPre=-/usr/bin/docker kill spm-agent
-	ExecStartPre=-/usr/bin/docker rm spm-agent
-	ExecStartPre=/usr/bin/docker pull sematext/spm-agent-docker:latest
-	ExecStart=/bin/sh -c 'set -ex; /usr/bin/docker run -d --name spm-agent -e SPM_TOKEN=$(etcdctl get SPM_TOKEN) -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker'
-	ExecStop=/usr/bin/docker stop spm-agent
-	
-	[Install]
-	WantedBy=multi-user.target
-	
-	[X-Fleet]
-	Global=true
+To initialize SPM for Docker with fleet please use [this unit file]((https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)).
 
+```
+wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/spm-agent.service
 ```
 
 To activate SPM Docker Agent for th entire cluster save the file as spm-agent.service. Load and start the service with
+
 ```
 	fleetctl load spm-agent.service && fleetctl start spm-agent.service
 ```
 
 After one minute you should see the metrics in SPM.
+
+### Centralize all journal logs
+
+Create a [Logsene](http://www.sematext.com/logsene/) App and add the CoreOS hosts to the IP Authentication list in the Logsene App settings.
+Then install the service:
+
+```
+	wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/logsene.service
+	fleetctl load logsene.service
+	fleetctl start logsene.service
+```
+
+More about [Logsene 1-click ELK Stack: Hosted Kibana4](http://blog.sematext.com/2015/06/11/1-click-elk-stack-hosted-kibana-4/)
 
 
 # Support
