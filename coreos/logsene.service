@@ -4,11 +4,9 @@ Description=Logsene Log Forwarder
 [Service]
 Restart=always
 RestartSec=10s
-ExecStartPre=sh -c "if [ -n \"$(etcdctl get /sematext.com/logsene/$HOSTNAME/lastlog)\" ]; then  echo \"Value Exists: /sematext.com/logsene/$HOSTNAME/lastlog $(etcdctl get /sematext.com/logsene/$HOSTNAME/lastlog)\"; else  etcdctl set /sematext.com/logsene/$HOSTNAME/lastlog \"`date +\"%Y-%m-%d %H:%M:%S\"`\"; fi"
-
-ExecStart=/bin/sh -c "journalctl --since \"`etcdctl get /sematext.com/logsene/$HOSTNAME/lastlog`\" -o short -f | ncat --ssl logsene-receiver-syslog.sematext.com  10514"
-
-ExecStopPost=/bin/etcdctl set /sematext.com/logsene/$HOSTNAME/lastlog "$(date +'%Y-%m-%d %H:%M:%S')"
+ExecStartPre=/bin/sh -c "if [ -n \"$(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\" ]; then  echo \"Value Exists: /sematext.com/logsene/`hostname`/lastlog $(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\"; else etcdctl set /sematext.com/logsene/`hostname`/lastlog\"`date +\"%Y-%%m-%d %%H:%M:%S\"`\"; fi"
+ExecStart=/bin/sh -c "journalctl --since \"$(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\" -o short -f | ncat --ssl logsene-receiver-syslog.sematext.com  10514"
+ExecStopPost=/bin/sh -c "export D=\"`date +\"%Y-%%m-%%d %%H:%M:%S\"`\"; /bin/etcdctl set /sematext.com/logsene/$(hostname)/lastlog \"$D\""
 
 [Install]
 WantedBy=multi-user.target
