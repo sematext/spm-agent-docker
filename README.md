@@ -42,7 +42,6 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 
 
 ## Installation 
-
 1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
 2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) and copy the SPM Application Token  
 3. Pull the docker image
@@ -87,7 +86,7 @@ Or follow us on twitter [![twitter](http://i.imgur.com/wWzX9uB.png) @sematext  ]
 
 ### Unit File for fleet
 
-To initialize SPM for Docker with fleet please use [this unit file]((https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)).
+To initialize SPM for Docker with fleet please use [this unit file](https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service).
 
 ```
 wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/spm-agent.service
