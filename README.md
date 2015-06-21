@@ -48,7 +48,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 
 1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
 2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) and copy the SPM Application Token
-3. Set the value of the SPM access token in etcd
+3. Set the value of the SPM application token in etcd
 
 	```
 	etcdctl set /SPM_TOKEN fe31fc3a-xxxx-xxxx-xxxx-be376bf58554
