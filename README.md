@@ -78,7 +78,7 @@ After one minute you should see the metrics in SPM.
 
 ### Centralize all journal logs
 
-Create a [Logsene](http://www.sematext.com/logsene/) App and add the CoreOS hosts to the IP Authentication list in the Logsene App settings.
+Create a [Logsene](http://www.sematext.com/logsene/) App and [authorize the CoreOS server IP addresses for syslog recievers](https://sematext.atlassian.net/wiki/display/PUBLOGSENE/Authorizing+IPs+for+Syslog).
 Then install the service from [this unit file](https://github.com/sematext/spm-agent-docker/blob/master/coreos/logsene.service):
 
 ```
@@ -88,6 +88,7 @@ Then install the service from [this unit file](https://github.com/sematext/spm-a
 
 More about [Logsene 1-click ELK Stack: Hosted Kibana4](http://blog.sematext.com/2015/06/11/1-click-elk-stack-hosted-kibana-4/)
 
+![](https://sematext.files.wordpress.com/2015/06/spm-logsene-coreos.png)
 
 # Support
 
