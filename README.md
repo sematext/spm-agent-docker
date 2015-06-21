@@ -93,6 +93,6 @@ More about [Logsene 1-click ELK Stack: Hosted Kibana4](http://blog.sematext.com/
 1. Please check the [SPM for Docker Wiki](https://sematext.atlassian.net/wiki/display/PUBSPM/SPM+for+Docker)
 2. If you have questions about SPM for Docker, chat with us in the [SPM user interface](https://apps.sematext.com/users-web/login.do) or drop an e-mail to support@sematext.com
 3. Open an issue [here](https://github.com/sematext/spm-agent-docker/issues) 
-4. Full README in Github [here](https://github.com/sematext/spm-agent-docker/developer.md)
+4. Contribution guide [here](https://github.com/sematext/spm-agent-docker/blob/master/contribute.md)
 
 
