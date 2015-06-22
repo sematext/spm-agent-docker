@@ -17,6 +17,16 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
   - container id
   - name tag 
 - Docker Events
+	- server-info - created by spm-agent framework with node.js and OS version info on startup
+	- docker-info - Docker Version, API Version, Kernel Version on startup
+	- create - Docker Status
+	- destroy - Docker Status
+	- start - Docker Status
+	- stop - Docker Status
+	- die - Docker Status
+
+
+
 
 ![](https://sematext.files.wordpress.com/2015/06/spm-for-docker.png?w=630&h=455)
 
@@ -43,6 +53,8 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 
 ![](https://sematext.files.wordpress.com/2015/06/docker-network-metrics.png)
 
+Docker Events:
+![](https://sematext.files.wordpress.com/2015/06/docker-events-3.png)
 
 ## Installation on CoreOS Linux
 
