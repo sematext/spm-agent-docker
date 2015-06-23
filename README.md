@@ -26,8 +26,6 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	- die - Docker Status
 
 
-
-
 ![](https://sematext.files.wordpress.com/2015/06/spm-for-docker.png?w=630&h=455)
 
 
@@ -37,13 +35,14 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 3. Run the image 
 	```
 	docker pull sematext/spm-agent-docker
-	docker run -d -e SPM_TOKEN=YOUR_APP_TOKEN -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
+	docker run -d -e SPM_TOKEN=YOUR_APP_TOKEN -e HOSTNAME=$HOSTNAME  -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
 	```
 
 	Required Parameters:
 	- -e SPM_TOKEN - SPM Application Token
 	- -e HOSTNAME - Name of the docker host
 	- -v /var/run/docker.sock - Path to the docker socket
+	- --priviledged might be required for Security Enhanced Linux (the better way is to have the right policy ...)
 	
 	You’ll see your Docker metrics in SPM after about a minute.
 	
