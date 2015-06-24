@@ -79,7 +79,7 @@ To initialize SPM for Docker with fleet please use [this unit file](https://gith
 wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/spm-agent.service
 ```
 
-To activate SPM Docker Agent for th entire cluster save the file as spm-agent.service. Load and start the service with
+To activate SPM Docker Agent for the entire cluster save the file as spm-agent.service. Load and start the service with
 
 ```
 	fleetctl load spm-agent.service && fleetctl start spm-agent.service
@@ -89,7 +89,7 @@ After one minute you should see the metrics in SPM.
 
 ### Centralize all journal logs
 
-Create a [Logsene](http://www.sematext.com/logsene/) App and [authorize the CoreOS server IP addresses for syslog recievers](https://sematext.atlassian.net/wiki/display/PUBLOGSENE/Authorizing+IPs+for+Syslog).
+Create a [Logsene](http://www.sematext.com/logsene/) App and [authorize the CoreOS server IP addresses for syslog receivers](https://sematext.atlassian.net/wiki/display/PUBLOGSENE/Authorizing+IPs+for+Syslog).
 Then install the service from [this unit file](https://github.com/sematext/spm-agent-docker/blob/master/coreos/logsene.service):
 
 ```
