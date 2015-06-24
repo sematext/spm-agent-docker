@@ -9,7 +9,7 @@ coreos:
         [Service]
         Restart=always
         RestartSec=10s
-        ExecStartPre=/bin/sh -c "if [ -n \"$(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\" ]; then  echo \"Value Exists: /sematext.com/logsene/`hostname`/lastlog $(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\"; else etcdctl set /sematext.com/logsene/`hostname`/lastlog\"`date +\"%Y-%%m-%d %%H:%M:%S\"`\"; fi"
+        ExecStartPre=/bin/sh -c "if [ -n \"$(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\" ]; then  echo \"Value Exists: /sematext.com/logsene/`hostname`/lastlog $(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\"; else etcdctl set /sematext.com/logsene/`hostname`/lastlog\"`date +\"%Y-%%m-%d %%H:%M:%S\"`\"; true; fi"
         ExecStart=/bin/sh -c "journalctl --since \"$(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\" -o short -f | ncat --ssl logsene-receiver-syslog.sematext.com  10514"
         ExecStopPost=/bin/sh -c "export D=\"`date +\"%Y-%%m-%%d %%H:%M:%S\"`\"; /bin/etcdctl set /sematext.com/logsene/$(hostname)/lastlog \"$D\""
         [Install]
