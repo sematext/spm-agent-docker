@@ -53,7 +53,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 ![](https://sematext.files.wordpress.com/2015/06/docker-network-metrics.png)
 
 Docker Events:
-![](https://sematext.files.wordpress.com/2015/06/docker-events-3.png)
+![](https://sematext.files.wordpress.com/2015/06/bildschirmfoto-2015-06-24-um-13-56-39.png)
 
 ## Installation on CoreOS Linux
 
