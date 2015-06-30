@@ -62,7 +62,7 @@ Docker Events:
 3. Set the value of the SPM application token in etcd
 
 	```
-	etcdctl set /sematext.com/myapp/spm/token fe31fc3a-xxxx-xxxx-xxxx-be376bf58554
+	etcdctl set /sematext.com/myapp/spm/token YOUR_SPM_TOKEN
 	```
 	
 4. Start SPM Agent (for tests only - see Unit File for fleet)
