@@ -68,7 +68,7 @@ Docker Events:
 4. Start SPM Agent (for tests only - see Unit File for fleet)
 
 	```
-	docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get SPM_TOKEN` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
+	docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get /sematext.com/myapp/spm/token` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
 	```
 
 ### Unit File for fleet
