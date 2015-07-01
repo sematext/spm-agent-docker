@@ -85,7 +85,10 @@ To activate SPM Docker Agent for the entire cluster save the file as spm-agent.s
 	fleetctl load spm-agent.service && fleetctl start spm-agent.service
 ```
 
-After one minute you should see the metrics in SPM.
+After one minute you should see the metrics in SPM. If you are interested in an overview instead of details shown above, 
+use the 'Birds Eye View' - listing current health status of all monitored machines
+
+![](https://sematext.files.wordpress.com/2015/07/core-os-bev.png)
 
 ### Centralize all journal logs
 
