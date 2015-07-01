@@ -24,6 +24,14 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	- start - Docker Status
 	- stop - Docker Status
 	- die - Docker Status
+- Docker Logs
+	- each line tagged with
+	  - hostname / IP address
+	  - container id
+	  - container name
+	  - image name
+	 - message
+	   - error detection (by regular expression e.g. error|fail|exception)
 
 
 ![](https://sematext.files.wordpress.com/2015/06/spm-for-docker.png?w=630&h=455)
@@ -31,19 +39,22 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 
 ## Installation 
 1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
-2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) and copy the SPM Application Token  
+2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) and copy the SPM Application Token 
+   For logs: [Create a Logsene App](https://apps.sematext.com/logsene-reports/registerApplication.do)   
 3. Run the image 
 	```
 	docker pull sematext/spm-agent-docker
-	docker run -d -e SPM_TOKEN=YOUR_APP_TOKEN -e HOSTNAME=$HOSTNAME  -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
+	docker run -d -e SPM_TOKEN=YOUR_SPM_TOKEN -e LOGSENE_TOKEN=YOUR_LOGSENE_TOKEN  -e HOSTNAME=$HOSTNAME  -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
 	```
 
 	Required Parameters:
 	- -e SPM_TOKEN - SPM Application Token
 	- -e HOSTNAME - Name of the docker host
 	- -v /var/run/docker.sock - Path to the docker socket
+	Optional Parameters:
 	- --priviledged might be required for Security Enhanced Linux (the better way is to have the right policy ...)
-	
+	- -e LOGSENE_TOKEN - Logsene Application Token for logs
+
 	You’ll see your Docker metrics in SPM after about a minute.
 	
 5. Watch metrics, use anomaly detection for alerts, create e-mail reports and [much more ...](http://blog.sematext.com/2015/06/09/docker-monitoring-support/)
