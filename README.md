@@ -31,8 +31,6 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	  - container name
 	  - image name
 	 - message
-	   - error detection (by regular expression e.g. error|fail|exception)
-
 
 ![](https://sematext.files.wordpress.com/2015/06/spm-for-docker.png?w=630&h=455)
 
