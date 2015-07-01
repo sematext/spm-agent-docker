@@ -24,13 +24,12 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	- start - Docker Status
 	- stop - Docker Status
 	- die - Docker Status
-- Docker Logs
-	- each line tagged with
-	  - hostname / IP address
-	  - container id
-	  - container name
-	  - image name
-	 - message
+- Docker Logs - fields
+	- hostname / IP address
+	- container id
+	- container name
+	- image name
+	- message
 
 ![](https://sematext.files.wordpress.com/2015/06/spm-for-docker.png?w=630&h=455)
 
