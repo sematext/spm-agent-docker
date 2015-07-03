@@ -37,7 +37,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 ## Installation 
 1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
 2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) and copy the SPM Application Token 
-   For logs: [Create a Logsene App](https://apps.sematext.com/logsene-reports/registerApplication.do)   
+   - For logs you need to [create a Logsene App](https://apps.sematext.com/logsene-reports/registerApplication.do) to obtain a second App Token for [Logsene](http://www.sematext.com/logsene/)  
 3. Run the image 
 	```
 	docker pull sematext/spm-agent-docker
