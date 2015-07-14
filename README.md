@@ -73,7 +73,7 @@ Docker Events:
 	etcdctl set /sematext.com/myapp/spm/token YOUR_SPM_TOKEN
 	```
 
-	If you like to add centralized logging set the Logsenen Token too (see logging section below): 
+	If you like to add centralized logging set the Logsene Token (see logging section below): 
 
 	```
 	etcdctl set /sematext.com/myapp/logsene/token YOUR_LOGSENE_TOKEN
@@ -107,7 +107,7 @@ use the 'Birds Eye View' - listing current health status of all monitored machin
 ### Centralize all journal logs
 
 Create a [Logsene](http://www.sematext.com/logsene/) App 
-Set the Logsenen Application token in etcd:
+Set the Logsene Application Token in etcd:
 ```
 etcdctl set /sematext.com/myapp/logsene/token YOUR_LOGSENE_TOKEN
 ```
