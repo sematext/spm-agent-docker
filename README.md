@@ -72,6 +72,12 @@ Docker Events:
 	```
 	etcdctl set /sematext.com/myapp/spm/token YOUR_SPM_TOKEN
 	```
+
+	If you like to add centralized logging set the Logsenen Token too (see logging section below): 
+
+	```
+	etcdctl set /sematext.com/myapp/logsene/token YOUR_LOGSENE_TOKEN
+	```
 	
 4. Start SPM Agent (for tests only - see Unit File for fleet)
 
@@ -81,16 +87,16 @@ Docker Events:
 
 ### Unit File for fleet
 
-To initialize SPM for Docker with fleet please use [this unit file](https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service).
+To initialize SPM for Docker with fleet please use [this unit file](https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent-v2.service).
 
 ```
-wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/spm-agent.service
+wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/spm-agent-v2.service
 ```
 
 To activate SPM Docker Agent for the entire cluster save the file as spm-agent.service. Load and start the service with
 
 ```
-	fleetctl load spm-agent.service && fleetctl start spm-agent.service
+	fleetctl load spm-agent-v2.service && fleetctl start spm-agent-v2.service
 ```
 
 After one minute you should see the metrics in SPM. If you are interested in an overview instead of details shown above, 
@@ -100,12 +106,17 @@ use the 'Birds Eye View' - listing current health status of all monitored machin
 
 ### Centralize all journal logs
 
-Create a [Logsene](http://www.sematext.com/logsene/) App and [authorize the CoreOS server IP addresses for syslog receivers](https://sematext.atlassian.net/wiki/display/PUBLOGSENE/Authorizing+IPs+for+Syslog).
-Then install the service from [this unit file](https://github.com/sematext/spm-agent-docker/blob/master/coreos/logsene.service):
+Create a [Logsene](http://www.sematext.com/logsene/) App 
+Set the Logsenen Application token in etcd:
+```
+etcdctl set /sematext.com/myapp/logsene/token YOUR_LOGSENE_TOKEN
+```
+
+Then install the service from [this unit file](https://github.com/sematext/spm-agent-docker/blob/master/coreos/logsene-v2.service):
 
 ```
-	wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/logsene.service
-	fleetctl load logsene.service; fleetctl start logsene.service; 
+	wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/logsene-v2.service
+	fleetctl load logsene-v2.service; fleetctl start logsene-v2.service; 
 ```
 
 More about [Logsene 1-click ELK Stack: Hosted Kibana4](http://blog.sematext.com/2015/06/11/1-click-elk-stack-hosted-kibana-4/)
