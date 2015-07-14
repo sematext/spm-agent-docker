@@ -14,7 +14,7 @@ ExecStart=/bin/sh -c "set -ex; /usr/bin/docker run --name spm-agent \
                       -e SPM_TOKEN=$(etcdctl get /sematext.com/myapp/spm/token) \
                       -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock \
                       -e LOGSENE_TOKEN=$(etcdctl get /sematext.com/myapp/logsene/token) \
-                      -p 9000:9000
+                      -p 9000:9000 \
                       sematext/spm-agent-docker"
 
 ExecStop=/usr/bin/docker stop spm-agent

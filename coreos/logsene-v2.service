@@ -1,6 +1,6 @@
 [Unit]
 Description=Logsene Log Forwarder
-requires=spm-agent.service
+requires=spm-agent-v2.service
 
 [Service]
 Restart=always
