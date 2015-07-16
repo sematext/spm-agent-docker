@@ -57,7 +57,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	Whitelist containers for logging 
 	- -e MATCH_BY_NAME - A regular expression to white list container names 
 	- -e MATCH_BY_IMAGE - A regular expression to white list image names 
-	Blacklist containers for logging
+	Blacklist containers 
 	- -e SKIP_BY_NAME - A regular expression to black list container names 
 	- -e SKIP_BY_IMAGE - A regular expression to black list image names for logging 
 
