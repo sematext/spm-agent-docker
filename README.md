@@ -16,14 +16,15 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
   - image name
   - container id
   - name tag 
-- Docker Events
-	- server-info - created by spm-agent framework with node.js and OS version info on startup
-	- docker-info - Docker Version, API Version, Kernel Version on startup
-	- create - Docker Status
-	- destroy - Docker Status
-	- start - Docker Status
-	- stop - Docker Status
-	- die - Docker Status
+- Events
+    - Version Information on Startup:
+        - server-info – created by spm-agent framework with node.js and OS version info on startup
+        - docker-info – Docker Version, API Version, Kernel Version on startup
+    - Docker Status Events:
+        - Container Lifecycle Events like
+            - create, exec_create, destroy, export
+        - Container Runtime Events like
+            - die, exec_start, kill, oom, pause, restart, start, stop, unpause
 - Docker Logs - fields
 	- hostname / IP address
 	- container id
