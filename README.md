@@ -48,10 +48,12 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	*Required Parameters:*
 	- -e SPM_TOKEN - SPM Application Token
 	- -e HOSTNAME - Name of the docker host
+			e.g. '169.254.169.254/latest/meta-data/local-hostname"
 	- -v /var/run/docker.sock - Path to the docker socket
 	
 	Optional Parameters:
 	- --priviledged might be required for Security Enhanced Linux (the better way is to have the right policy ...)
+	- -e HOSTNAME_LOOKUP_URL - On Amazon ECS, a [metadata query](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) must be used to get the instance hostname (e.g. "169.254.169.254/latest/meta-data/local-hostname")
 	
 	_Docker Logs Parameters_
 	- -e LOGSENE_TOKEN - Logsene Application Token for logs
