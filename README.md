@@ -54,6 +54,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	Optional Parameters:
 	- --priviledged might be required for Security Enhanced Linux (the better way is to have the right policy ...)
 	- -e HOSTNAME_LOOKUP_URL - On Amazon ECS, a [metadata query](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) must be used to get the instance hostname (e.g. "169.254.169.254/latest/meta-data/local-hostname")
+	- HTTPS_PROXY - If spm-agent-docker runs behind firewalls a proxy might be requred to reach SPM server (all logs and metrics will be transmitted using this proxy)
 	
 	_Docker Logs Parameters_
 	- -e LOGSENE_TOKEN - Logsene Application Token for logs
