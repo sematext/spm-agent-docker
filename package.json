@@ -53,7 +53,7 @@
     "flat": "^1.5.1",
     "line-delimited-json": "megastef/line-delimited-json",
     "lodash": "^3.10.0",
-    "logsene-js": "^1.0.5",
+    "logsene-js": "^1.0.7",
     "ls": "^0.1.0",
     "measured": "^1.0.0",
     "minimist": "^1.1.1",
