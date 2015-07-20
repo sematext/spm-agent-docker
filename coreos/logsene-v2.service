@@ -12,7 +12,7 @@ ExecStartPre=/bin/sh -c \
                 etcdctl set /sematext.com/logsene/`hostname`/lastlog\"`date +\"%Y-%%m-%d %%H:%M:%S\"`\"; true; \
               fi"
 ExecStart=/bin/sh -c "journalctl --since \"$(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\" -o json -f \
-                      | ncat localhost 9000"
+                      | ncat localhost $(etcdctl get /sematext.com/myapp/logsene/gateway_port)"
 ExecStopPost=/bin/sh -c "export D=\"`date +\"%Y-%%m-%%d %%H:%M:%S\"`\"; \
                          /bin/etcdctl set /sematext.com/logsene/$(hostname)/lastlog \"$D\""
 
