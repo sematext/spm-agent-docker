@@ -1,24 +1,21 @@
 coreos: 
-  units: 
-    - name: logsene.service
-      command: start
-      runtime: no
-      content: |
-        [Unit]
-        Description=Logsene Log Forwarder
-        [Service]
-        Restart=always
-        RestartSec=10s
-        ExecStartPre=/bin/sh -c "if [ -n \"$(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\" ]; then  echo \"Value Exists: /sematext.com/logsene/`hostname`/lastlog $(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\"; else etcdctl set /sematext.com/logsene/`hostname`/lastlog\"`date +\"%Y-%%m-%d %%H:%M:%S\"`\"; true; fi"
-        ExecStart=/bin/sh -c "journalctl --since \"$(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\" -o short -f | ncat --ssl logsene-receiver-syslog.sematext.com  10514"
-        ExecStopPost=/bin/sh -c "export D=\"`date +\"%Y-%%m-%%d %%H:%M:%S\"`\"; /bin/etcdctl set /sematext.com/logsene/$(hostname)/lastlog \"$D\""
-        [Install]
-        WantedBy=multi-user.target
-        [X-Fleet]
-        Global=true
+  units:
+     etcd:
+        discovery: https://discovery.etcd.io/token
+        addr: $private_ipv4:4001
+        peer-addr: $private_ipv4:7001
 
+    fleet:
+        public-ip: $private_ipv4
+        etcd-servers: http://$private_ipv4:4001 
+
+    - name: etcd.service
+      command: start
+    - name: fleet.service
+      command: start
     - name: spm-agent.service
       command: start
+      enable: true
       runtime: no
       content: |
         [Unit]
@@ -29,12 +26,47 @@ coreos:
         TimeoutStartSec=0
         Restart=always
         RestartSec=30s
+        ExecPreStart=-etcdctl set /sematext.com/myapp/spm/token || etcdctl set /sematext.com/myapp/spm/token YOUR_SPM_TOKEN
+        ExecPreStart=-etcdctl set /sematext.com/myapp/logsene/token YOUR_LOGSENE_TOKEN
+        ExecPreStart=-etcdctl set /sematext.com/myapp/logsene/gateway_port 9000
         ExecStartPre=-/usr/bin/docker kill spm-agent
         ExecStartPre=-/usr/bin/docker rm spm-agent
         ExecStartPre=/usr/bin/docker pull sematext/spm-agent-docker:latest
-        ExecStart=/bin/sh -c 'set -ex; /usr/bin/docker run --name spm-agent -e SPM_TOKEN=$(etcdctl get /sematext.com/myapp/spm/token) -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker'
+        ExecStart=/bin/sh -c 'set -ex; /usr/bin/docker run --name spm-agent \
+                              -e SPM_TOKEN=$(etcdctl get /sematext.com/myapp/spm/token) \
+                              -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock \
+                              -e LOGSENE_TOKEN=$(etcdctl get /sematext.com/myapp/logsene/token) \
+                              -p 9000:9000
+                              sematext/spm-agent-docker'
         ExecStop=/usr/bin/docker stop spm-agent
         [Install]
         WantedBy=multi-user.target
         [X-Fleet]
         Global=true
+
+    - name: logsene-v2.service
+      command: start
+      enable: true
+      runtime: no
+      content: |
+        [Unit]
+        Description=Logsene Log Forwarder
+        requires=spm-agent.service
+        [Service]
+        Restart=always
+        RestartSec=10s
+        ExecStartPre=/bin/sh -c \
+                     "if [ -n \"$(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\" ]; then  \
+                        echo \"Last log date: $(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\"; \
+                      else \
+                        etcdctl set /sematext.com/logsene/`hostname`/lastlog\"`date +\"%Y-%%m-%d %%H:%M:%S\"`\"; true; \
+                      fi"
+        ExecStart=/bin/sh -c "journalctl --since \"$(etcdctl get /sematext.com/logsene/`hostname`/lastlog)\" -o json -f \
+                              | ncat localhost 9000"
+        ExecStopPost=/bin/sh -c "export D=\"`date +\"%Y-%%m-%%d %%H:%M:%S\"`\"; \
+                                 /bin/etcdctl set /sematext.com/logsene/$(hostname)/lastlog \"$D\""
+        [Install]
+        WantedBy=multi-user.target
+        [X-Fleet]
+        Global=true
+
