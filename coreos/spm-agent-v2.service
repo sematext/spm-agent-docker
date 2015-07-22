@@ -11,7 +11,7 @@ RestartSec=30s
 ExecStartPre=-/bin/sh -c "/bin/etcdctl get /sematext.com/myapp/logsene/gateway_port || /bin/etcdctl set /sematext.com/m
 yapp/logsene/gateway_port 9000"
 ExecStartPre=/bin/sh -c "/usr/bin/docker kill spm-agent; true;"
-ExecStartPre=/bin/sh -c "/usr/bin/docker rm spm-agent; true;"
+ExecStartPre=/bin/sh -c "/usr/bin/docker rm -v spm-agent; true;"
 ExecStartPre=/bin/sh -c "/usr/bin/docker pull sematext/spm-agent-docker;true"
 ExecStart=/bin/sh -c "set -ex; /usr/bin/docker run --name spm-agent \
                       -e SPM_TOKEN=$(etcdctl get /sematext.com/myapp/spm/token) \
