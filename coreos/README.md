@@ -22,7 +22,7 @@ Read more about [Centralized Log Management and Monitoring for CoreOS Clusters](
 1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
 2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) to obtain the SPM Application Token
 3. Create a [Logsene](http://www.sematext.com/logsene/) App to obtain the Logsene Token
-4. Run the install script on one of your CoreOS machines
+4. Run the [install script](https://github.com/sematext/spm-agent-docker/blob/master/coreos/install_spm.sh) on one of your CoreOS machines - services will be distributed to all machines via fleet
 
 ```
 wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/install_spm.sh -O install_spm.sh
