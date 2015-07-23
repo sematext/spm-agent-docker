@@ -9,7 +9,7 @@ This directory provides fleet units to install SPM on CoreOS
 	
 - [logsene.service](https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)
 
-	- It forwards logs from journald to that logging gateway running as part of spm-agent-docker 
+	- It forwards logs from journald to the logging gateway running as part of spm-agent-docker 
 	- All fields stored in the journal are then available in Logsene.
 - [cloud-config.example.yml](https://github.com/sematext/spm-agent-docker/blob/master/coreos/cloud-config.example.yml) an example, which integrates spm-agent.service and logsene.service in a cloud config file for deployments on new cluster nodes
 
