@@ -1,41 +1,46 @@
 # Setup SPM on CoreOS
 
-This directory provides fleet units to install SPM on CoreOS
-- spm-agent.service 
+This directory provides fleet units to install [SPM](http://sematext.com/spm/integrations/coreos-monitoring.html) on CoreOS
+- [spm-agent.service](https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)
 
-		- The first unit file spm-agent.service starts SPM Agent for Docker. 
-		- It takes the SPM and Logsene app tokens and port for the logging gateway etcd. 
-		- It starts on every CoreOS host (global unit).
-- logsene.service
+	- spm-agent.service starts SPM Agent for Docker on all hosts 
+	- It takes the SPM and Logsene App Tokens and the TCP port for the logging gateway from etcd
+	- It starts on every CoreOS host (global unit)
+	
+- [logsene.service](https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent.service)
 
-	- The second unit file logsene-service.service forwards logs from journald to that logging gateway running as part of spm-agent-docker. 
-	- All fields stored in the journal (down to source-code level and line numbers provided by GO modules) are then available in Logsene.
-
-
+	- It forwards logs from journald to the logging gateway running as part of spm-agent-docker 
+	- All fields stored in the journal are then available in [Logsene](http://www.sematext.com/logsene/index.html).
+- [cloud-config.example.yml](https://github.com/sematext/spm-agent-docker/blob/master/coreos/cloud-config.example.yml) an example, which integrates spm-agent.service and logsene.service in a cloud config file for deployments on new cluster nodes
 
 # Install SPM on an existing Cluster
 
 ## Quickstart - get up and running in 5 minutes
 
-Get a free account [apps.sematext.com](https://apps.sematext.com)
-1. Create an SPM App of type “Docker” and copy the SPM Application Token
-2. Create a Logsene App to obtain a second App Token for Logsene to store your logs
-3. Login to your CoreOS machine
+1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
+2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) to obtain the SPM Application Token
+3. Create a [Logsene](http://www.sematext.com/logsene/) App to obtain the Logsene Token
+3. Run the install script on one of your CoreOS machines
 
 ```
-wget wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/install_spm.sh
+wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/install_spm.sh -O install_spm.sh
 chmod +x install_spm.sh
 ./install_spm.sh YOUR_SPM_TOKEN YOUR_LOGSENE_TOKEN 9000
 ```
 
+Parameters:
+1. SPM Token
+2. Logsne Token
+3. Port for the Logging Gateway (exposed TCP port in spm-agent)
 
 ## Step by Step - understand whats going on ...
 
 ### Preparation:
-Get a free account [apps.sematext.com](https://apps.sematext.com)
-1. Create an SPM App of type “Docker” and copy the SPM Application Token
-2. For logs you need to create a Logsene App to obtain a second App Token for Logsene
-3. Store the configuration in etcd, the Logsene Gateway Port is 9000 by default. 
+
+1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
+2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) to obtain the SPM Application Token
+3. Create a [Logsene](http://www.sematext.com/logsene/) App to obtain the Logsene Token
+4. Store the configuration in etcd, the Logsene Gateway Port is 9000 by default. 
 
 ```
 etcdctl set /sematext.com/myapp/spm/token SPM_TOKEN
@@ -43,31 +48,37 @@ etcdctl set /sematext.com/myapp/logsene/token LOGSENE_TOKEN
 etcdctl set /sematext.com/myapp/logsene/gateway_port LOGSENE_GATEWAY_PORT
 ```
 
+5. Download the service files and install it with fleet
 
 ### Installation on existing clusters
 
 ```
 # INSTALLATION
 # Download the unit file for SPM
-wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/spm-agent.service
+wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/spm-agent.service -O spm-agent.service
 # Start SPM Agent in the whole cluster
 fleetctl load spm-agent.service
 fleetctl start spm-agent.service
 # Download the unit file for Logsene
-wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/logsene.service
+wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/logsene.service -O logsene.service
 # Start the log forwarding service
 fleetctl load logsene.service
 fleetctl start logsene.service
 ```
 
-
 ### Installation using cloud config
 
-In this case include the unit files in your cloud config. 
-An example is provided here
+An example is provided here [cloud-config.example.yml](https://github.com/sematext/spm-agent-docker/blob/master/coreos/cloud-config.example.yml). Please don't forget to set the App Tokens in etcd!
+
+```
+etcdctl set /sematext.com/myapp/spm/token SPM_TOKEN
+etcdctl set /sematext.com/myapp/logsene/token LOGSENE_TOKEN
+etcdctl set /sematext.com/myapp/logsene/gateway_port LOGSENE_GATEWAY_PORT
+```
 
 # Contributions are welcome
 
-If you see a way to improve the setup, make things easier or discovered a bug submit a pull requests.  
+If you see a way to improve the setup, make things easier or discovered a bug - please submit a pull request.  
+
 
 
