@@ -1,13 +1,16 @@
 # Setup SPM on CoreOS
 
-We provide here example files to install SPM on CoreOS
+This directory provides fleet units to install SPM on CoreOS
 - spm-agent.service 
+
 		- The first unit file spm-agent.service starts SPM Agent for Docker. 
 		- It takes the SPM and Logsene app tokens and port for the logging gateway etcd. 
 		- It starts on every CoreOS host (global unit).
 - logsene.service
+
 	- The second unit file logsene-service.service forwards logs from journald to that logging gateway running as part of spm-agent-docker. 
 	- All fields stored in the journal (down to source-code level and line numbers provided by GO modules) are then available in Logsene.
+
 
 
 # Install SPM on an existing Cluster
