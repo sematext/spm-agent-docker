@@ -36,7 +36,7 @@ Parameters for install_spm.sh:
 2. Logsene Token
 3. Port for the Logging Gateway (exposed TCP port in spm-agent) e.g. 9000
 
-# Installation Step by Step - understand whats going on ...
+# Installation Step by Step - understand what's going on ...
 
 ### Preparation:
 
