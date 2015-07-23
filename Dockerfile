@@ -1,9 +1,12 @@
-FROM iojs:2-slim
+FROM alpine:edge
+RUN echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories 
+RUN apk update
+RUN apk add --update iojs
+RUN apk add --update git
 
-RUN apt-get update -qyy \
-  && apt-get install -qyy git \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+RUN apk update
+RUN apk upgrade
+RUN rm -rf /var/cache/apk/*
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
