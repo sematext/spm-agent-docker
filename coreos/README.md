@@ -17,11 +17,10 @@ This directory provides fleet units to install SPM on CoreOS
 
 ## Quickstart - get up and running in 5 minutes
 
-Get a free account [apps.sematext.com](https://apps.sematext.com)
-
-1. Create an SPM App of type “Docker” and copy the SPM Application Token
-2. Create a Logsene App to obtain a second App Token for Logsene to store your logs
-3. Login to your CoreOS machine
+1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
+2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) to obtain the SPM Application Token
+3. Create a [Logsene](http://www.sematext.com/logsene/) App to obtain the Logsene Token
+3. Run the install script on one of your CoreOS machines
 
 ```
 wget wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/install_spm.sh
@@ -33,11 +32,11 @@ chmod +x install_spm.sh
 ## Step by Step - understand whats going on ...
 
 ### Preparation:
-Get a free account [apps.sematext.com](https://apps.sematext.com)
 
-1. Create an SPM App of type “Docker” and copy the SPM Application Token
-2. For logs you need to create a Logsene App to obtain a second App Token for Logsene
-3. Store the configuration in etcd, the Logsene Gateway Port is 9000 by default. 
+1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
+2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) to obtain the SPM Application Token
+3. Create a [Logsene](http://www.sematext.com/logsene/) App to obtain the Logsene Token
+4. Store the configuration in etcd, the Logsene Gateway Port is 9000 by default. 
 
 ```
 etcdctl set /sematext.com/myapp/spm/token SPM_TOKEN
@@ -45,6 +44,7 @@ etcdctl set /sematext.com/myapp/logsene/token LOGSENE_TOKEN
 etcdctl set /sematext.com/myapp/logsene/gateway_port LOGSENE_GATEWAY_PORT
 ```
 
+5. Download the service files and install it with fleet
 
 ### Installation on existing clusters
 
@@ -61,7 +61,6 @@ wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/l
 fleetctl load logsene.service
 fleetctl start logsene.service
 ```
-
 
 ### Installation using cloud config
 
