@@ -13,6 +13,8 @@ This directory provides fleet units to install [SPM](http://sematext.com/spm/int
 	- All fields stored in the journal are then available in [Logsene](http://www.sematext.com/logsene/index.html).
 - [cloud-config.example.yml](https://github.com/sematext/spm-agent-docker/blob/master/coreos/cloud-config.example.yml) an example, which integrates spm-agent.service and logsene.service in a cloud config file for deployments on new cluster nodes
 
+Read more about [Centralized Log Management and Monitoring for CoreOS Clusters](http://blog.sematext.com/2015/07/21/coreos-clusters-centralized-log-management-and-monitoring/)  
+
 # Install SPM on an existing Cluster
 
 ## Quickstart - get up and running in 5 minutes
