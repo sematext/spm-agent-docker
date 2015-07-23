@@ -17,5 +17,5 @@ if [[ -n "$1" && -n "$2" && -n "$3"  ]] ; then
 else 
 	echo "Missing paramaters. Usage:"
 	echo "install_spm.sh SPM_TOKEN LOGSENE_TOKEN LOGSENE_GATEWAY_PORT (e.g. 9000)"
-	echo "You can get your access tokens here: https://apps.sematext.com/"
+	echo "Please optain your access tokens here: https://apps.sematext.com/"
 fi 
