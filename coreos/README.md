@@ -30,10 +30,11 @@ chmod +x install_spm.sh
 ./install_spm.sh YOUR_SPM_TOKEN YOUR_LOGSENE_TOKEN 9000
 ```
 
-Parameters:
+Parameters dor install_spm.sh:
+
 1. SPM Token
-2. Logsne Token
-3. Port for the Logging Gateway (exposed TCP port in spm-agent)
+2. Logsene Token
+3. Port for the Logging Gateway (exposed TCP port in spm-agent) e.g. 9000
 
 # Installation Step by Step - understand whats going on ...
 
