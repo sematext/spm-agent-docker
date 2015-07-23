@@ -30,7 +30,7 @@ chmod +x install_spm.sh
 ./install_spm.sh YOUR_SPM_TOKEN YOUR_LOGSENE_TOKEN 9000
 ```
 
-Parameters dor install_spm.sh:
+Parameters for install_spm.sh:
 
 1. SPM Token
 2. Logsene Token
