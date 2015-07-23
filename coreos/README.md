@@ -18,6 +18,7 @@ This directory provides fleet units to install SPM on CoreOS
 ## Quickstart - get up and running in 5 minutes
 
 Get a free account [apps.sematext.com](https://apps.sematext.com)
+
 1. Create an SPM App of type “Docker” and copy the SPM Application Token
 2. Create a Logsene App to obtain a second App Token for Logsene to store your logs
 3. Login to your CoreOS machine
@@ -33,6 +34,7 @@ chmod +x install_spm.sh
 
 ### Preparation:
 Get a free account [apps.sematext.com](https://apps.sematext.com)
+
 1. Create an SPM App of type “Docker” and copy the SPM Application Token
 2. For logs you need to create a Logsene App to obtain a second App Token for Logsene
 3. Store the configuration in etcd, the Logsene Gateway Port is 9000 by default. 
