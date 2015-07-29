@@ -63,6 +63,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	Blacklist containers 
 	- -e SKIP_BY_NAME - A regular expression to black list container names 
 	- -e SKIP_BY_IMAGE - A regular expression to black list image names for logging 
+	- -v /yourpatterns/patterns.yml:/etc/logagent/patterns.yml - to provide custom patterns for log parsing, see [logagent-js](https://github.com/sematext/logagent-js)
 
 
 	You’ll see your Docker metrics in SPM after about a minute.
@@ -75,6 +76,25 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 
 Docker Events:
 ![](https://sematext.files.wordpress.com/2015/06/bildschirmfoto-2015-06-24-um-13-56-39.png)
+
+# Integrated log parser
+
+SPM for Docker recognizes log formats - so your logs arrive in a structured format in Logsene!
+The format recognition, data extractions, date parsing etc. is provided by [logagent-js](https://github.com/sematext/logagent-js) and covers:
+- Format detection e.g. for
+	- nginx
+	- apache
+	- mysql
+	- redis  
+- plain text log messages
+- line delemited JSON logs
+
+To use a custom pattern definition simply mount a volume to '/etc/logagent/patterns.yml':
+```
+-v /mydir/patterns.yml:/etc/logagent/patterns.yml
+```
+
+Feel free to contribute to [logagent-js](https://github.com/sematext/logagent-js) to enrich the default pattern set. 
 
 ## Installation on CoreOS Linux
 
