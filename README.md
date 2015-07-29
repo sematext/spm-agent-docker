@@ -82,10 +82,11 @@ Docker Events:
 SPM for Docker recognizes log formats - so your logs arrive in a structured format in Logsene!
 The format recognition, data extractions, date parsing etc. is provided by [logagent-js](https://github.com/sematext/logagent-js) and covers:
 - Format detection e.g. for
-	- nginx
-	- apache
-	- mysql
-	- redis  
+    - Mongo DB
+	- Nginx
+	- Apache
+	- MySQL
+	- Redis  
 - plain text log messages
 - line delemited JSON logs
 
@@ -98,61 +99,8 @@ Feel free to contribute to [logagent-js](https://github.com/sematext/logagent-js
 
 ## Installation on CoreOS Linux
 
-1. Get a free account [apps.sematext.com](https://apps.sematext.com/users-web/register.do)  
-2. [Create an SPM App of type “Docker”](https://apps.sematext.com/spm-reports/registerApplication.do) and copy the SPM Application Token
-3. Set the value of the SPM application token in etcd
-
-	```
-	etcdctl set /sematext.com/myapp/spm/token YOUR_SPM_TOKEN
-	```
-
-	If you like to add centralized logging set the Logsene Token (see logging section below): 
-
-	```
-	etcdctl set /sematext.com/myapp/logsene/token YOUR_LOGSENE_TOKEN
-	```
-	
-4. Start SPM Agent (for tests only - see Unit File for fleet)
-
-	```
-	docker run -d --name spm-agent -e SPM_TOKEN=`etcdctl get /sematext.com/myapp/spm/token` -e HOSTNAME=$HOSTNAME -v /var/run/docker.sock:/var/run/docker.sock sematext/spm-agent-docker
-	```
-
-### Unit File for fleet
-
-To initialize SPM for Docker with fleet please use [this unit file](https://github.com/sematext/spm-agent-docker/blob/master/coreos/spm-agent-v2.service).
-
-```
-wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/spm-agent-v2.service
-```
-
-To activate SPM Docker Agent for the entire cluster save the file as spm-agent.service. Load and start the service with
-
-```
-	fleetctl load spm-agent-v2.service && fleetctl start spm-agent-v2.service
-```
-
-After one minute you should see the metrics in SPM. If you are interested in an overview instead of details shown above, 
-use the 'Birds Eye View' - listing current health status of all monitored machines
-
-![](https://sematext.files.wordpress.com/2015/07/core-os-bev.png)
-
-### Centralize all journal logs
-
-Create a [Logsene](http://www.sematext.com/logsene/) App 
-Set the Logsene Application Token in etcd:
-```
-etcdctl set /sematext.com/myapp/logsene/token YOUR_LOGSENE_TOKEN
-```
-
-Then install the service from [this unit file](https://github.com/sematext/spm-agent-docker/blob/master/coreos/logsene-v2.service):
-
-```
-	wget https://raw.githubusercontent.com/sematext/spm-agent-docker/master/coreos/logsene-v2.service
-	fleetctl load logsene-v2.service; fleetctl start logsene-v2.service; 
-```
-
-More about [Logsene 1-click ELK Stack: Hosted Kibana4](http://blog.sematext.com/2015/06/11/1-click-elk-stack-hosted-kibana-4/)
+SPM for Docker can momitor CoreOS clusters including metrics and logs from Docker and journald.   
+See: [Setup SPM on CoreOS](https://github.com/sematext/spm-agent-docker/tree/master/coreos)
 
 ![](https://sematext.files.wordpress.com/2015/06/spm-logsene-coreos.png)
 
