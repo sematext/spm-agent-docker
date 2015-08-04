@@ -1,11 +1,8 @@
-FROM alpine:edge
-RUN echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories 
+FROM mhart/alpine-node 
 RUN apk update
-RUN apk add --update iojs
+RUN apk add --update procps
 RUN apk add --update git
-
-RUN apk update
-RUN apk upgrade
+RUN apk add --update curl
 RUN rm -rf /var/cache/apk/*
 
 RUN mkdir -p /usr/src/app
