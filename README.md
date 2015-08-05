@@ -53,7 +53,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	Optional Parameters:
 	- --priviledged might be required for Security Enhanced Linux (the better way is to have the right policy ...)
 	- -e HOSTNAME_LOOKUP_URL - On Amazon ECS, a [metadata query](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) must be used to get the instance hostname (e.g. "169.254.169.254/latest/meta-data/local-hostname")
-	- HTTPS_PROXY - url for a proxy server 
+	- -e HTTPS_PROXY - url for a proxy server
 	
 	_Docker Logs Parameters_
 	- -e LOGSENE_TOKEN - Logsene Application Token for logs
@@ -77,7 +77,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 Docker Events:
 ![](https://sematext.files.wordpress.com/2015/06/bildschirmfoto-2015-06-24-um-13-56-39.png)
 
-# Integrated log parser
+## Integrated log parser
 
 SPM for Docker recognizes log formats - so your logs arrive in a structured format in Logsene!
 The format recognition, data extractions, date parsing etc. is provided by [logagent-js](https://github.com/sematext/logagent-js) and covers:
@@ -97,7 +97,7 @@ To use a custom pattern definition simply mount a volume to '/etc/logagent/patte
 
 Feel free to contribute to [logagent-js](https://github.com/sematext/logagent-js) to enrich the default pattern set. 
 
-## Installation on CoreOS Linux
+# Installation on CoreOS Linux
 
 SPM for Docker can momitor CoreOS clusters including metrics and logs from Docker and journald.   
 See: [Setup SPM on CoreOS](https://github.com/sematext/spm-agent-docker/tree/master/coreos)
