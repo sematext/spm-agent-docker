@@ -99,7 +99,7 @@ Feel free to contribute to [logagent-js](https://github.com/sematext/logagent-js
 
 # Installation on CoreOS Linux
 
-SPM for Docker can momitor CoreOS clusters including metrics and logs from Docker and journald.   
+SPM for Docker can monitor CoreOS clusters including metrics and logs from Docker and journald.   
 See: [Setup SPM on CoreOS](https://github.com/sematext/spm-agent-docker/tree/master/coreos)
 
 ![](https://sematext.files.wordpress.com/2015/06/spm-logsene-coreos.png)
