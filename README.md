@@ -88,7 +88,7 @@ The format recognition, data extractions, date parsing etc. is provided by [loga
 	- MySQL
 	- Redis  
 - plain text log messages
-- line delemited JSON logs
+- line delimited JSON logs
 
 To use a custom pattern definition simply mount a volume to '/etc/logagent/patterns.yml':
 ```
