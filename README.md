@@ -1,7 +1,8 @@
 
 # SPM for Docker
 
-[SPM performance monitoring by Sematext](http://sematext.com/spm/integrations/docker-monitoring.html) - this is the  monitoring agent for Docker.
+[SPM Docker Monitoring Agent and Log Shipper](http://sematext.com/spm/integrations/docker-monitoring.html) - this is the monitoring agent and log shipper for Docker. It collects Host and Container Metrics, Docker Events and Logs (including log format detection and log parsers)
+
 
 Following information is collected and transmitted to SPM (Cloud or On-Premises version):
 
@@ -31,6 +32,13 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	- container name
 	- image name
 	- message
+	- Log format detection and log parsers: 
+		- NGINX
+		- APACHE httpd, Kafka, Solr, HBase, Zookeeper, Cassandra
+		- MySQL
+		- MongoDB
+		- Redis, ...
+		- JSON 
 
 ![](https://sematext.files.wordpress.com/2015/06/spm-for-docker.png?w=630&h=455)
 
@@ -82,9 +90,9 @@ Docker Events:
 SPM for Docker recognizes log formats - so your logs arrive in a structured format in Logsene!
 The format recognition, data extractions, date parsing etc. is provided by [logagent-js](https://github.com/sematext/logagent-js) and covers:
 - Format detection e.g. for
-    - Mongo DB
+    	- Mongo DB
 	- Nginx
-	- Apache
+	- Apache httpd, Kafka, Cassandra, HBase, Solr, Zookeeper
 	- MySQL
 	- Redis  
 - plain text log messages
