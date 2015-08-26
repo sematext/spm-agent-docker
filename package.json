@@ -1,6 +1,6 @@
 {
   "name": "spm-agent-docker",
-  "version": "1.27.10",
+  "version": "1.27.11",
   "description": "Docker monitoring agent for SPM by Sematext",
   "main": "lib/index.js",
   "directories": {
@@ -47,8 +47,8 @@
   "dependencies": {
     "adm-zip": "^0.4.7",
     "docker-events": "0.0.2",
-    "docker-loghose": "^0.5.0",
-    "docker-stats": "^0.2.1",
+    "docker-loghose": "^0.7.0",
+    "docker-stats": "^0.5.0",
     "dockerode": "^2.2.2",
     "flat": "^1.5.1",
     "line-delimited-json": "megastef/line-delimited-json",
