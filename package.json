@@ -1,6 +1,6 @@
 {
   "name": "spm-agent-docker",
-  "version": "1.27.11",
+  "version": "1.27.12",
   "description": "Docker monitoring agent for SPM by Sematext",
   "main": "lib/index.js",
   "directories": {
@@ -61,7 +61,7 @@
     "moment": "^2.10.6",
     "node-df": "^0.1.1",
     "request": "^2.60.0",
-    "spm-agent": "^1.27.0",
+    "spm-agent": "^1.27.4",
     "spm-metrics-js": "^1.0.7",
     "through2": "^0.6.5",
     "which": "^1.0.9",
