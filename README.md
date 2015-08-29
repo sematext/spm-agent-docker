@@ -1,11 +1,10 @@
 
 # SPM for Docker
 
-[SPM Docker Monitoring Agent and Log Shipper](http://sematext.com/spm/integrations/docker-monitoring.html) - it collects Host and Container Metrics, Docker Events and Logs (including log format detection and log parsers).
+This is the Docker Monitoring Agent and Log Shipper for 
+[SPM - performance monitoring, anomaly detection, and alerting solution](http://sematext.com/spm/integrations/docker-monitoring.html) 
 
-
-Following information is collected and transmitted to SPM (Cloud or On-Premises version):
-
+Following information is collected and transmitted to SPM :
 - OS Metrics of the Host machine (CPU / Mem / Swap) 
 - Stats from containers
 	- CPU Usage
