@@ -4,42 +4,38 @@
 This is the Docker Monitoring Agent and Log Shipper for 
 [SPM - performance monitoring, anomaly detection, and alerting solution](http://sematext.com/spm/integrations/docker-monitoring.html) 
 
-Following information is collected and transmitted to SPM :
-- OS Metrics of the Host machine (CPU / Mem / Swap) 
+Gathered informations:
+- Operating System Metrics of the Host machine (CPU / Mem / Swap/ ...) 
 - Stats from containers
 	- CPU Usage
 	- Memory Usage
 	- Network Stats
 	- Disk I/O Stats
-- Aggregations / Filters by 
-  - host name
-  - image name
-  - container id
-  - name tag 
 - Events
     - Version Information on Startup:
         - server-info – created by spm-agent framework with node.js and OS version info on startup
         - docker-info – Docker Version, API Version, Kernel Version on startup
-    - Docker Status Events:
+    - Docker Events:
         - Container Lifecycle Events like
             - create, exec_create, destroy, export
         - Container Runtime Events like
-            - die, exec_start, kill, oom, pause, restart, start, stop, unpause
-- Docker Logs - fields
+            - die, exec_start, kill, pause, restart, start, stop, unpause, ...
+- Docker Logs 
+  - default fields
 	- hostname / IP address
 	- container id
 	- container name
 	- image name
 	- message
-	- Log format detection and log parsers: 
-		- NGINX
-		- APACHE httpd, Kafka, Solr, HBase, Zookeeper, Cassandra
-		- MySQL
-		- MongoDB
-		- Redis
-		- Elasticsearch
-		- Nsq.io
-		- JSON, ... 
+  - Log format detection and log parsers: 
+	- NGINX
+	- APACHE httpd, Kafka, Solr, HBase, Zookeeper, Cassandra
+	- MySQL
+	- MongoDB
+	- Redis
+	- Elasticsearch
+	- Nsq.io
+	- JSON, ... 
 
 ![](https://sematext.files.wordpress.com/2015/06/spm-for-docker.png?w=630&h=455)
 
@@ -66,14 +62,14 @@ Following information is collected and transmitted to SPM :
 	
 	_Docker Logs Parameters_
 	- -e LOGSENE_TOKEN - Logsene Application Token for logs
-	- -e REMOVE_ANSI_ESCAPE_SEQ=enabled - removes e.g. ANSI Terminal color codes from logs for pattern matching
-	Whitelist containers for logging 
-	- -e MATCH_BY_NAME - A regular expression to white list container names 
-	- -e MATCH_BY_IMAGE - A regular expression to white list image names 
-	Blacklist containers 
-	- -e SKIP_BY_NAME - A regular expression to black list container names 
-	- -e SKIP_BY_IMAGE - A regular expression to black list image names for logging 
-	- -v /yourpatterns/patterns.yml:/etc/logagent/patterns.yml - to provide custom patterns for log parsing, see [logagent-js](https://github.com/sematext/logagent-js)
+	- -e REMOVE_ANSI_ESCAPE_SEQ=enabled - removes e.g. ANSI Terminal color codes from logs for pattern matching 
+	- Whitelist containers for logging 
+	  - -e MATCH_BY_NAME - A regular expression to white list container names 
+	  - -e MATCH_BY_IMAGE - A regular expression to white list image names 
+	- Blacklist containers 
+	  - -e SKIP_BY_NAME - A regular expression to black list container names 
+	  - -e SKIP_BY_IMAGE - A regular expression to black list image names for logging 
+	  - -v /yourpatterns/patterns.yml:/etc/logagent/patterns.yml - to provide custom patterns for log parsing, see [logagent-js](https://github.com/sematext/logagent-js)
 
 
 	You’ll see your Docker metrics in SPM after about a minute.
