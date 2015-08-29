@@ -37,8 +37,10 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 		- APACHE httpd, Kafka, Solr, HBase, Zookeeper, Cassandra
 		- MySQL
 		- MongoDB
-		- Redis, ...
-		- JSON 
+		- Redis
+		- Elasticsearch
+		- Nsq.io
+		- JSON, ... 
 
 ![](https://sematext.files.wordpress.com/2015/06/spm-for-docker.png?w=630&h=455)
 
@@ -65,6 +67,7 @@ Following information is collected and transmitted to SPM (Cloud or On-Premises 
 	
 	_Docker Logs Parameters_
 	- -e LOGSENE_TOKEN - Logsene Application Token for logs
+	- -e REMOVE_ANSI_ESCAPE_SEQ=enabled - removes e.g. ANSI Terminal color codes from logs for pattern matching
 	Whitelist containers for logging 
 	- -e MATCH_BY_NAME - A regular expression to white list container names 
 	- -e MATCH_BY_IMAGE - A regular expression to white list image names 
