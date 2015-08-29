@@ -4,7 +4,7 @@
 This is the Docker Monitoring Agent and Log Shipper for 
 [SPM - performance monitoring, anomaly detection, and alerting solution](http://sematext.com/spm/integrations/docker-monitoring.html) 
 
-Gathered informations:
+Gathered information:
 - Operating System Metrics of the Host machine (CPU / Mem / Swap/ ...) 
 - Stats from containers
 	- CPU Usage
