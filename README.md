@@ -1,7 +1,7 @@
 
 # SPM for Docker
 
-This is the [Docker Monitoring Agent and Log Shipper] for [SPM Docker Monitoring](http://sematext.com/spm/integrations/docker-monitoring.html) (for Docker metrics and events) & [Logsene](http://sematext.com/logsene) (for centralized logging)
+This is the Docker Monitoring Agent and Log Shipper for [SPM Docker Monitoring](http://sematext.com/spm/integrations/docker-monitoring.html) (for Docker metrics and events) & [Logsene / Hosted ELK](http://sematext.com/logsene) (for centralized logging)
 
 Gathered information:
 - Operating System Metrics of the Host machine (CPU / Mem / Swap/ ...) 
