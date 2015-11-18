@@ -55,7 +55,7 @@ Gathered information:
 	- -v /var/run/docker.sock - Path to the docker socket
 	
 	**Optional Parameters:**
-	- --priviledged might be required for Security Enhanced Linux (the better way is to have the right policy ...)
+	- --privileged  might be required for Security Enhanced Linux (the better way is to have the right policy ...)
 	- -e HOSTNAME_LOOKUP_URL - On Amazon ECS, a [metadata query](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) must be used to get the instance hostname (e.g. "169.254.169.254/latest/meta-data/local-hostname")
 	- -e HTTPS_PROXY - url for a proxy server
 	
