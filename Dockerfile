@@ -1,4 +1,4 @@
-FROM mhart/alpine-node 
+FROM mhart/alpine-node:4
 RUN apk update
 RUN apk add --update procps
 RUN apk add --update git
