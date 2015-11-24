@@ -17,19 +17,28 @@ var ls = require('ls')
 var os = require('os')
 var path = require('path')
 
+var dockerInfo = {}
+
+try {
+	dockerInfo = fs.statSync ('/var/run/docker.sock')
+} catch (ex) {
+	dockerInfo = ex
+}
 var systemInfo = {
   operatingSystem: os.type() + ', ' + os.platform() + ', ' + os.release() + ', ' + os.arch(),
   processVersions: process.versions,
-  processEnvironment: process.env
+  processEnvironment: process.env,
+  dockerSocketInfo: dockerInfo
 }
 
 var cfgDumpFileName = path.join(os.tmpdir(), 'spm-cfg-dump.txt')
 fs.writeFileSync(cfgDumpFileName, util.inspect(config).toString() + '\nSystem-Info:\n' + util.inspect(systemInfo))
+console.log(util.inspect(config).toString() + '\nSystem-Info:\n' + util.inspect(systemInfo))
 var logfiles = ls(config.logger.dir + '/*')
 zip.addLocalFile(cfgDumpFileName)
-// console.log ('Adding file ' + cfgDumpFileName)
+console.log ('Adding file ' + cfgDumpFileName)
 logfiles.forEach(function (f) {
-  // console.log ('Adding file ' + f.file )
+  console.log ('Adding file ' + f.file )
   zip.addLocalFile(f.full)
 })
 var archFileName = os.tmpdir() + 'spm-diagnose.zip'
