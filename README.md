@@ -1,7 +1,7 @@
 # Please note: spm-agent-docker has moved 
 
 You can find the latest version here: 
-- **Github: [sematext/sematext-agent-docker](https://github.com/sematext/)**
+- **Github: [sematext/sematext-agent-docker](https://github.com/sematext/sematext-agent-docker)**
 - **Docker Hub: [sematext/sematext-agent-docker](https://hub.docker.com/r/sematext/sematext-agent-docker/)**
 
 ----------------------
